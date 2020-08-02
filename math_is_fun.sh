@@ -1,13 +1,5 @@
 #!/bin/bash
 
-# Creates a mock quiz of various difficulties and various lengths. Handles improper input and returns results.
-
-# ISSUES: 
-# 1. Unable to return '*' because it expands contents of directory so I
-# need to return 'x' and then convert it to '*' later. Escaping did not
-# make a difference.
-# 2. No exit codes in program yet.
-
 function print_problem () {
 	echo "What is $1 $3 $2 ?"
 }
@@ -31,13 +23,13 @@ play_again='y'
 while [ $play_again = 'y' ]
 do
 
-# BEGIN EXECUTION
 echo "USER'S ANSWERS" > users_answers.txt
 echo "ACTUAL ANSWERS" > actual_answers.txt
 echo "QUESTIONS" > questions.txt
 
 echo "How many math problems would you like?"
 read num_probs
+
 while [ $num_probs -lt 1 ]
 do
 	echo "Please enter a number greater than 0."
@@ -46,6 +38,7 @@ done
 
 echo "What difficulty? (1 = Hard, 2 = Med, 3 = Easy)"
 read difficulty
+
 while  [ 1 ]
 do
 	if [[ $difficulty == 1 || $difficulty == 2 || $difficulty == 3 ]]; then
